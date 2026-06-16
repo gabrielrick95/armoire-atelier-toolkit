@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armoire Atelier — Templates de Legendas</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #A07D3F;
+    --black: #1A1A1A;
+    --dark: #2D2D2D;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --gray: #8A8A8A;
+    --light-gray: #F0EDE8;
+    --blush: #F5E6E0;
+    --blush-dark: #D4A59A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--black) 0%, var(--dark) 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(201,169,110,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .header .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--white);
+    font-weight: 400;
+    position: relative;
+  }
+
+  .header .meta {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+  }
+
+  .header .meta span {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .header .meta strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .intro {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 0.95rem;
+    color: var(--dark);
+    line-height: 1.8;
+  }
+
+  /* Nav tabs */
+  .nav-tabs {
+    max-width: 960px;
+    margin: 40px auto 0;
+    padding: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .nav-tab {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid var(--light-gray);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .nav-tab:hover {
+    border-color: var(--gold);
+    color: var(--gold-dark);
+  }
+
+  .nav-tab.active {
+    background: var(--black);
+    color: var(--gold-light);
+    border-color: var(--black);
+  }
+
+  /* Template cards */
+  .templates-container {
+    max-width: 960px;
+    margin: 30px auto 60px;
+    padding: 0 30px;
+  }
+
+  .template-card {
+    display: none;
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--light-gray);
+    margin-bottom: 24px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .template-card.visible {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .template-header {
+    padding: 28px 32px 20px;
+    position: relative;
+  }
+
+  .template-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+  }
+
+  .template-header.story::before { background: linear-gradient(180deg, #E8B8C4, #D495A8); }
+  .template-header.promo::before { background: linear-gradient(180deg, #E8C4A0, #D4A070); }
+  .template-header.brand::before { background: linear-gradient(180deg, #C4B8E8, #9585D4); }
+  .template-header.educ::before { background: linear-gradient(180deg, #B8D4E8, #8BB4D4); }
+  .template-header.reel::before { background: linear-gradient(180deg, #E8D5B0, #C9A96E); }
+  .template-header.simple::before { background: linear-gradient(180deg, #C8E8B8, #95D485); }
+
+  .template-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .template-header .badge {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .badge.story { background: #FDF2EE; color: #8B4049; }
+  .badge.promo { background: #FDF5EE; color: #8B6B40; }
+  .badge.brand { background: #F5EEFD; color: #6B408B; }
+  .badge.educ { background: #EEF5FD; color: #40608B; }
+  .badge.reel { background: #FDF8EE; color: #8B7B40; }
+  .badge.simple { background: #F0FDEE; color: #4A7A3D; }
+
+  .template-header .use-for {
+    font-size: 0.82rem;
+    color: var(--gray);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .template-body {
+    padding: 0 32px 28px;
+  }
+
+  /* Structure breakdown */
+  .structure {
+    margin-bottom: 24px;
+  }
+
+  .structure h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.85rem;
+    color: var(--gold-dark);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .structure-step {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+  }
+
+  .structure-step .num {
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold-dark);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .structure-step .text {
+    font-size: 0.85rem;
+    color: var(--dark);
+    line-height: 1.6;
+  }
+
+  .structure-step .text em {
+    color: var(--gray);
+    font-style: italic;
+  }
+
+  /* Example box */
+  .example-box {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+  }
+
+  .example-box .label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--gold);
+    color: var(--white);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+  }
+
+  .example-box .content {
+    font-size: 0.85rem;
+    line-height: 1.85;
+    color: var(--dark);
+    white-space: pre-line;
+    padding-top: 8px;
+  }
+
+  .example-box .content .highlight {
+    background: rgba(201,169,110,0.15);
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 24px;
+    background: var(--black);
+    color: var(--gold-light);
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background: var(--gold-dark);
+    color: var(--white);
+  }
+
+  .copy-btn.copied {
+    background: #4A7A3D;
+    color: var(--white);
+  }
+
+  /* Rules section */
+  .rules-section {
+    max-width: 960px;
+    margin: 0 auto 60px;
+    padding: 0 30px;
+  }
+
+  .rules-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .rule-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--light-gray);
+    position: relative;
+    padding-left: 56px;
+  }
+
+  .rule-card .rule-num {
+    position: absolute;
+    left: 20px;
+    top: 24px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .rule-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .rule-card p {
+    font-size: 0.82rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  .footer {
+    background: var(--black);
+    padding: 40px;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .footer .logo-sm {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 0.72rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  @media print {
+    .header { background: var(--black) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .nav-tabs { display: none; }
+    .template-card { display: block !important; break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .header .logo { font-size: 2rem; letter-spacing: 3px; }
+    .header h1 { font-size: 1.2rem; }
+    .header .meta { flex-direction: column; gap: 8px; }
+    .template-header { padding: 20px 20px 16px; }
+    .template-body { padding: 0 20px 20px; }
+    .rules-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">ARMOIRE ATELIER</div>
+  <div class="subtitle">Estratégia de Conteúdo</div>
+  <h1>Templates de Legendas</h1>
+  <div class="meta">
+    <span><strong>6</strong> templates</span>
+    <span><strong>6</strong> exemplos prontos</span>
+    <span><strong>7</strong> regras de ouro</span>
+  </div>
+</div>
+
+<div class="intro">
+  <p>Legendas prontas para usar. Cada template inclui <strong>gancho emocional + corpo + CTA</strong>. Substitua os campos entre {chaves} e cole direto no Instagram.</p>
+</div>
+
+<!-- Navigation -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTemplate('story', this)">📖 Storytelling<br><small style="opacity:0.6">Produto especial</small></div>
+  <div class="nav-tab" onclick="showTemplate('promo', this)">🔥 Promoção<br><small style="opacity:0.6">Oferta direta</small></div>
+  <div class="nav-tab" onclick="showTemplate('brand', this)">💜 Marca<br><small style="opacity:0.6">Conexão emocional</small></div>
+  <div class="nav-tab" onclick="showTemplate('educ', this)">📚 Educativo<br><small style="opacity:0.6">Carrossel dicas</small></div>
+  <div class="nav-tab" onclick="showTemplate('reel', this)">🎬 Reel/Vídeo<br><small style="opacity:0.6">Alcance</small></div>
+  <div class="nav-tab" onclick="showTemplate('simple', this)">📷 Simples<br><small style="opacity:0.6">Foto rápida</small></div>
+</div>
+
+<div class="templates-container">
+
+  <!-- TEMPLATE 1: STORYTELLING -->
+  <div class="template-card visible" id="tpl-story">
+    <div class="template-header story">
+      <h2>📖 Produto com Storytelling <span class="badge story">Alto engajamento</span></h2>
+      <p class="use-for">Para peças especiais, lançamentos, destaques do catálogo</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Gancho emocional</strong> — Uma frase sobre a peça ou sensação que ela provoca. <em>Ex: "Existem peças que não são só acessórios."</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>História</strong> — "Esta peça existe porque..." / "Tudo começou quando..." / "Eu sempre acreditei que..."</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Descrição sensorial</strong> — Material, textura, como usar. Use os sentidos: toque, brilho, leveza.</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>Preço + Local + WhatsApp</strong> — Sempre inclua os três</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">5</div>
+          <div class="text"><strong>CTA</strong> — "Comenta 💎 se você merece" / "Salva pra não esquecer" / "Marca uma amiga"</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-story">Existem peças que não são só acessórios. Ela transforma.
+
+Este colar nasceu da ideia de que toda mulher carrega uma história — e merece uma peça que conte a dela.
+
+✨ Colar em madeira artesanal
+✨ Acabamento delicado, perfeito para o dia a dia ou aquele momento especial
+✨ Leve, confortável e único
+
+💰 R$ 249,90
+📍 Av. dos Flamboyants, nº 385 • Parque das Laranjeiras
+📲 Link na bio para WhatsApp
+
+Comenta 💎 se você merece essa peça
+
+#modafeminina #acessoriosfemininos #semijoias #goiania #modagoiania #autoestima #feminilidade #elegancia #lookdodia #instafashion #reels #consumolocal #joiarriaartistica #colargrande #sofisticacao</div>
+        <button class="copy-btn" onclick="copyExample('example-story', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE 2: PROMOÇÃO -->
+  <div class="template-card" id="tpl-promo">
+    <div class="template-header promo">
+      <h2>🔥 Promoção / Oferta <span class="badge promo">Conversão direta</span></h2>
+      <p class="use-for">Para queima de estoque, datas comemorativas, liquidação</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Gancho de urgência</strong> — Emoji chamativo + frase de oportunidade. <em>Ex: "💎 Promoção relâmpago para as Armoretes!"</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>O que + benefício emocional</strong> — Não diga só o preço. Diga por que é especial. <em>Ex: "Selecionamos semijoias incríveis com preço especial — porque se presentear não é luxo, é necessidade."</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Preço</strong> — "Antes: R$ XXX → Agora: R$ XXX" ou "A partir de R$ XX"</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>Urgência</strong> — "Válido enquanto durar o estoque" / "Só até sexta" / "Unidades limitadas"</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">5</div>
+          <div class="text"><strong>Local + WhatsApp + CTA</strong> — "Comenta PRESENTE que mando detalhes" / "Manda pra uma amiga"</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-promo">💎 Promoção relâmpago para as Armoretes!
+
+Selecionamos semijoias incríveis com preço especial — porque se presentear não é luxo, é necessidade.
+
+A partir de R$ 89,90
+
+⏰ Válido enquanto durar o estoque!
+
+📍 Av. dos Flamboyants, nº 385 • Parque das Laranjeiras
+📲 Chama no WhatsApp — link na bio
+
+Manda pra uma amiga que precisa ver isso 👇
+
+#promoção #ofertaespecial #semijoias #acessoriosfemininos #precocerto #goiania #lojasgoiania #modafeminina #consumolocal #presenteespecial #viral #reels #fyp #modagoiania #queimaestoque</div>
+        <button class="copy-btn" onclick="copyExample('example-promo', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE 3: STORYTELLING DA MARCA -->
+  <div class="template-card" id="tpl-brand">
+    <div class="template-header brand">
+      <h2>💜 Storytelling da Marca <span class="badge brand">Conexão emocional</span></h2>
+      <p class="use-for">Para história da loja, bastidores, fundadora, valores</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Pergunta ou reflexão</strong> — Algo que gere identificação imediata. <em>Ex: "Durante muito tempo, eu me observei com dúvidas."</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>Sua história — seja vulnerável</strong> — Não precisa ser perfeito. Precisa ser verdadeiro.</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Conexão com a marca</strong> — O que você aprendeu / como isso se conecta com a Armoire</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>Espaço para o leitor</strong> — Faça parte da história</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">5</div>
+          <div class="text"><strong>CTA suave</strong> — "Você também já passou por isso?" / "Comenta aqui sua história"</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-brand">Durante muito tempo, eu me observei com dúvidas.
+
+Havia inseguranças, silêncios, uma certa distância entre quem eu era e quem eu desejava ser. Mas o amor pelo que faço foi maior. E a Armoire nasceu disso — da coragem de transformar insegurança em propósito.
+
+Cada peça que eu escolho para a loja carrega um pouco dessa jornada. Porque eu sei que por trás de cada mulher que entra aqui, existe uma história de superação.
+
+Você também já se sentiu assim? Me conta aqui 👇
+
+#autoestima #mulherpoderosa #autocuidado #feminilidade #goiania #consumolocal #modafeminina #reels #explore #instafashion</div>
+        <button class="copy-btn" onclick="copyExample('example-brand', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE 4: EDUCATIVO -->
+  <div class="template-card" id="tpl-educ">
+    <div class="template-header educ">
+      <h2>📚 Carrossel Educativo <span class="badge educ">Salvos + Compartilhamentos</span></h2>
+      <p class="use-for">Para dicas de estilo, combinações, cuidados com peças</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Gancho com promessa de valor</strong> — "5 formas de usar X sem errar" / "3 combinações que vão transformar seu look"</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>Dicas numeradas</strong> — 📌 Dica 1, 📌 Dica 2... Seja prática e direta</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Resumo / benefício final</strong> — Uma frase que feche com chave de ouro</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>Local + WhatsApp + CTA</strong> — "Salva pra consultar depois" / "Compartilha com uma amiga"</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-educ">5 formas de usar um colar statement sem errar 👇
+
+📌 Com decote V — alonga a silhueta e chama atenção pro rosto
+📌 Com camiseta básica — transforma um look simples em sofisticado
+📌 Com blazer — o contraste entre formal e delicado é poderoso
+📌 Sozinho — menos é mais. Deixa o colar ser a estrela
+📌 Combinado com brincos pequenos — equilíbrio perfeito
+
+O segredo? O acessório certo transforma qualquer produção.
+
+📍 Av. dos Flamboyants, nº 385 • Parque das Laranjeiras
+📲 Link na bio
+
+Salva esse post pra consultar depois 🔖
+
+#acessoriosfemininos #semijoias #lookdodia #ootd #modafeminina #goiania #modagoiania #instafashion #fashion #style #dicasdeestilo #colargrande #sofisticacao #reels #explore</div>
+        <button class="copy-btn" onclick="copyExample('example-educ', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE 5: REEL -->
+  <div class="template-card" id="tpl-reel">
+    <div class="template-header reel">
+      <h2>🎬 Reel / Vídeo Curto <span class="badge reel">Alcance + Engajamento</span></h2>
+      <p class="use-for">Para vídeos de apresentação, bastidores, transformação</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Gancho nos 3 primeiros segundos</strong> — Texto na tela ou fala. <em>Ex: "Essa loja em Goiânia vai mudar seu guarda-roupa"</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>Desenvolvimento visual rápido</strong> — Mostre o produto em uso, em contexto. Pessoas reais > produto parado.</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Fechamento com CTA na tela</strong> — "Comenta se você quer visitar" / "Link na bio"</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>Legenda curta + hashtags</strong> — Reels performam melhor com legendas diretas e muitas hashtags</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-reel">[Na tela: "Essa loja em Goiânia vai mudar seu guarda-roupa"]
+
+✨ Apresento a vocês a sua mais nova loja favorita!
+Um cantinho cheio de brilho, estilo e peças escolhidas a dedo pra deixar qualquer look ainda mais especial.
+
+Lingerie • Semijoias • Bijuterias • Bolsas • Pijamas • Acessórios
+
+Tudo pensado pra mulher que sabe que merece o melhor.
+
+📍 Av. dos Flamboyants, nº 385 • Parque das Laranjeiras
+📲 Link na bio
+
+Comenta 🌸 se você já quer visitar!
+
+#goiania #modagoiania #lojasgoiania #modafeminina #lingerie #semijoias #acessoriosfemininos #bolsafeminina #reels #viral #fyp #explore #consumolocal #parquedaslaranjeiras #lookdodia</div>
+        <button class="copy-btn" onclick="copyExample('example-reel', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEMPLATE 6: SIMPLES -->
+  <div class="template-card" id="tpl-simple">
+    <div class="template-header simple">
+      <h2>📷 Produto Simples <span class="badge simple">Foto rápida</span></h2>
+      <p class="use-for">Para catálogo rápido, novidades do dia, foto única</p>
+    </div>
+    <div class="template-body">
+      <div class="structure">
+        <h4>Estrutura</h4>
+        <div class="structure-step">
+          <div class="num">1</div>
+          <div class="text"><strong>Gancho emocional — 1 linha</strong> — Nunca comece com preço. <em>Ex: "Seu look merece esse toque de sofisticação ✨"</em></div>
+        </div>
+        <div class="structure-step">
+          <div class="num">2</div>
+          <div class="text"><strong>Produto + diferencial</strong> — Nome + 1 frase sobre o que torna especial</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">3</div>
+          <div class="text"><strong>Preço + Local + WhatsApp</strong> — Sempre os três</div>
+        </div>
+        <div class="structure-step">
+          <div class="num">4</div>
+          <div class="text"><strong>CTA simples</strong> — "Comenta ❤️ se gostou" / "Manda pra uma amiga" / "Disponível na loja"</div>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <div class="label">Exemplo pronto</div>
+        <div class="content" id="example-simple">Seu look merece esse toque de sofisticação ✨
+
+Bracelete dourado delicado — o acessório que transforma qualquer produção.
+
+💰 R$ 209,90
+📍 Av. dos Flamboyants, nº 385 • Parque das Laranjeiras
+📲 Link na bio
+
+Comenta 💎 se você quer o seu!
+
+#acessoriosfemininos #semijoias #pulseiradelicada #modafeminina #goiania #lojasgoiania #precocerto #lookdodia #instafashion #fashion #style #elegancia #sofisticacao #reels #consumolocal</div>
+        <button class="copy-btn" onclick="copyExample('example-simple', this)">⬜ Copiar Legenda</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- REGRAS DE OURO -->
+<div class="rules-section">
+  <h2>✦ Regras de Ouro para Legendas</h2>
+  <div class="rules-grid">
+    <div class="rule-card">
+      <div class="rule-num">1</div>
+      <h4>Nunca comece com preço</h4>
+      <p>Comece com emoção, pergunta ou gancho. Preço no meio ou final.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">2</div>
+      <h4>Sempre tenha CTA</h4>
+      <p>"Comenta", "Salva", "Manda pra amiga", "Marca alguém". Toda legenda precisa de uma ação.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">3</div>
+      <h4>Use 15-20 hashtags</h4>
+      <p>Menos que isso limita o alcance. Misture pelo menos 2 grupos diferentes.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">4</div>
+      <h4>Parágrafos curtos</h4>
+      <p>Legibilidade no mobile é tudo. Linhas longas = scroll = perda de atenção.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">5</div>
+      <h4>Endereço + WhatsApp sempre</h4>
+      <p>Em todo post, sem exceção. Você quer que a pessoa vá até a loja.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">6</div>
+      <h4>Emojis com moderação</h4>
+      <p>3-5 por legenda, estratégicos. Emoji demais polui e parece amador.</p>
+    </div>
+    <div class="rule-card">
+      <div class="rule-num">7</div>
+      <h4>Storytelling > Catálogo</h4>
+      <p>Ninguém compra produto, compra sensação. Conte uma história, não faça uma vitrine.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="logo-sm">ARMOIRE ATELIER</div>
+  <p>Templates de Legendas · Estratégia de Conteúdo · 2026</p>
+</div>
+
+<script>
+function showTemplate(id, el) {
+  // Hide all
+  document.querySelectorAll('.template-card').forEach(c => c.classList.remove('visible'));
+  // Show target
+  document.getElementById('tpl-' + id).classList.add('visible');
+  // Update tabs
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  // Scroll to templates
+  document.querySelector('.templates-container').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function copyExample(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = '⬜ Copiar Legenda';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+</html>
