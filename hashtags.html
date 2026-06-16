@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Armoire Atelier — Pacote de Hashtags</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --gold-dark: #A07D3F;
+    --black: #1A1A1A;
+    --dark: #2D2D2D;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --gray: #8A8A8A;
+    --light-gray: #F0EDE8;
+    --blush: #F5E6E0;
+    --blush-dark: #D4A59A;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--black);
+    line-height: 1.6;
+  }
+
+  .header {
+    background: linear-gradient(135deg, var(--black) 0%, var(--dark) 100%);
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, rgba(201,169,110,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .header .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 6px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .header .subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    color: var(--white);
+    font-weight: 400;
+    position: relative;
+  }
+
+  .header .meta {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+  }
+
+  .header .meta span {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .header .meta strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  .intro {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: 0.95rem;
+    color: var(--dark);
+    line-height: 1.8;
+  }
+
+  .instructions {
+    max-width: 800px;
+    margin: 20px auto 50px;
+    padding: 24px 30px;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+  }
+
+  .instructions h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--gold-dark);
+    margin-bottom: 12px;
+  }
+
+  .instructions ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .instructions li {
+    font-size: 0.85rem;
+    color: var(--dark);
+    padding: 4px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .instructions li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+  }
+
+  .section {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 0 30px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+
+  .section-header .icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+
+  .section-header .icon.niche { background: linear-gradient(135deg, #F5E6E0, #E8C4B8); }
+  .section-header .icon.lifestyle { background: linear-gradient(135deg, #E8D5F5, #C4B8E8); }
+  .section-header .icon.local { background: linear-gradient(135deg, #D5E8F5, #B8D4E8); }
+  .section-header .icon.product { background: linear-gradient(135deg, #E8F5D5, #C4E8B8); }
+  .section-header .icon.campaign { background: linear-gradient(135deg, #F5E8D5, #E8D4B8); }
+  .section-header .icon.engagement { background: linear-gradient(135deg, #F5D5D5, #E8B8B8); }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .section-header .tag {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--gray);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .hashtag-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .hashtag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    user-select: none;
+    border: 1px solid transparent;
+  }
+
+  .hashtag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .hashtag .num {
+    font-size: 0.65rem;
+    opacity: 0.5;
+    font-weight: 400;
+  }
+
+  .hashtag .copy-hint {
+    font-size: 0.65rem;
+    opacity: 0;
+    transition: opacity 0.2s;
+    color: inherit;
+  }
+
+  .hashtag:hover .copy-hint {
+    opacity: 0.6;
+  }
+
+  /* Group colors */
+  .group-a .hashtag { background: #FDF2EE; color: #8B4049; border-color: #F0D5CC; }
+  .group-b .hashtag { background: #F5EEFD; color: #6B408B; border-color: #DDD0F0; }
+  .group-c .hashtag { background: #EEF5FD; color: #40608B; border-color: #CCDCF0; }
+  .group-d .hashtag { background: #F0FDEE; color: #4A7A3D; border-color: #D0F0CC; }
+  .group-e .hashtag { background: #FDF5EE; color: #8B6B40; border-color: #F0E0CC; }
+  .group-f .hashtag { background: #FDEEEE; color: #8B4040; border-color: #F0CCCC; }
+
+  .divider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 30px;
+    border: none;
+    border-top: 1px solid var(--light-gray);
+  }
+
+  /* Combinations section */
+  .combo-section {
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 0 30px;
+  }
+
+  .combo-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .combo-section .combo-sub {
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 36px;
+  }
+
+  .combo-card {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+    border: 1px solid var(--light-gray);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .combo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+  }
+
+  .combo-card.lingerie::before { background: linear-gradient(180deg, #E8B8C4, #D495A8); }
+  .combo-card.semijoias::before { background: linear-gradient(180deg, #E8D5B0, #C9A96E); }
+  .combo-card.bolsas::before { background: linear-gradient(180deg, #B8D4E8, #8BB4D4); }
+  .combo-card.promo::before { background: linear-gradient(180deg, #E8C4A0, #D4A070); }
+  .combo-card.story::before { background: linear-gradient(180deg, #C4B8E8, #9585D4); }
+
+  .combo-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .combo-card .context {
+    font-size: 0.78rem;
+    color: var(--gray);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .combo-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .combo-tags span {
+    font-size: 0.75rem;
+    padding: 5px 12px;
+    border-radius: 6px;
+    background: var(--cream);
+    color: var(--dark);
+    border: 1px solid var(--light-gray);
+    font-weight: 500;
+  }
+
+  .copy-all-btn {
+    display: block;
+    margin: 30px auto 0;
+    padding: 14px 40px;
+    background: var(--black);
+    color: var(--gold-light);
+    border: none;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .copy-all-btn:hover {
+    background: var(--gold-dark);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(201,169,110,0.3);
+  }
+
+  .footer {
+    background: var(--black);
+    padding: 40px;
+    text-align: center;
+    margin-top: 60px;
+  }
+
+  .footer .logo-sm {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+  }
+
+  .footer p {
+    font-size: 0.72rem;
+    color: var(--gray);
+    letter-spacing: 1px;
+  }
+
+  @media print {
+    .header { background: var(--black) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .hashtag { break-inside: avoid; }
+    .combo-card { break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    .header .logo { font-size: 2rem; letter-spacing: 3px; }
+    .header h1 { font-size: 1.2rem; }
+    .header .meta { flex-direction: column; gap: 8px; }
+    .section-header h2 { font-size: 1.1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">ARMOIRE ATELIER</div>
+  <div class="subtitle">Estratégia de Conteúdo</div>
+  <h1>Pacote de Hashtags</h1>
+  <div class="meta">
+    <span><strong>65</strong> hashtags</span>
+    <span><strong>6</strong> grupos</span>
+    <span><strong>5</strong> combinações prontas</span>
+  </div>
+</div>
+
+<div class="intro">
+  <p>Hashtags estratégicas organizadas por tema e volume de uso. Rotacione entre os grupos para maximizar o alcance e evitar shadowban. Use entre <strong>15 a 20 por post</strong>, misturando pelo menos 2 grupos diferentes.</p>
+</div>
+
+<div class="instructions">
+  <h3>✦ Como usar</h3>
+  <ul>
+    <li>Use 15-20 hashtags por post — menos que isso limita o alcance</li>
+    <li>Sempre misture pelo menos 2 grupos diferentes</li>
+    <li>Alterne as combinações a cada 3-4 posts para não parecer spam</li>
+    <li>Coloque as hashtags na primeira legenda (não nos comentários)</li>
+    <li>Adapte o Grupo D e E conforme o produto e a data do post</li>
+  </ul>
+</div>
+
+<!-- GRUPO A -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon niche">🅰️</div>
+    <div>
+      <h2>Nicho Principal</h2>
+      <div class="tag">Moda íntima · Acessórios · Semijoias · Volume médio-alto</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-a">
+    <div class="hashtag" onclick="copyTag(this)">#modafeminina <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#acessoriosfemininos <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#semijoias <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bijuterias <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#lingeriebrasil <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#modaintima <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#lingerie <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#semijoiasfinas <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#acessorios <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#joiarriaartistica <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GRUPO B -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon lifestyle">🅱️</div>
+    <div>
+      <h2>Estilo de Vida & Sensualidade</h2>
+      <div class="tag">Autoestima · Empoderamento · Glamour · Volume médio</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-b">
+    <div class="hashtag" onclick="copyTag(this)">#autocuidado <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#autoestima <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#mulherpoderosa <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#feminilidade <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#sensualidade <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#glamour <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#elegancia <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#sofisticacao <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#estilofeminino <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#belezafeminina <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GRUPO C -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon local">🅲️</div>
+    <div>
+      <h2>Local — Goiânia & Região</h2>
+      <div class="tag">Alcance local · Clientela da cidade · Volume baixo</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-c">
+    <div class="hashtag" onclick="copyTag(this)">#goiania <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#modagoiania <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#lojasgoiania <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#goias <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#parquedaslaranjeiras <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#shoppinggoiania <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#consumolocal <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#feiraemgoiania <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#goianiamoderna <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#vizinhagoiania <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GRUPO D -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon product">🅳️</div>
+    <div>
+      <h2>Produto Específico</h2>
+      <div class="tag">Rotação por categoria · Use conforme o produto do post</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-d">
+    <div class="hashtag" onclick="copyTag(this)">#lingerieimportada <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#lingerieelegante <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bodylingerie <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#sutia <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#calcinha <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#brincosgrandes <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#colargrande <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#pulseiradelicada <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#brincos <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bolsafeminina <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bolsapraclutch <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bolsapequena <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#necessaire <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#bolsadehand <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GRUPO E -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon campaign">🅴️</div>
+    <div>
+      <h2>Campanha & Datas Comerciais</h2>
+      <div class="tag">Sazonal · Troque conforme a época</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-e">
+    <div class="hashtag" onclick="copyTag(this)">#diadosnamorados <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#presentediadosnamorados <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#presentepravocê <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#presenteespecial <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#promoção <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#ofertaespecial <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#lancamento <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#novidades <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#queimaestoque <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#precocerto <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- GRUPO F -->
+<div class="section">
+  <div class="section-header">
+    <div class="icon engagement">🅵️</div>
+    <div>
+      <h2>Engajamento & Comunidade</h2>
+      <div class="tag">Alcance ampliado · Volume alto</div>
+    </div>
+  </div>
+  <div class="hashtag-grid group-f">
+    <div class="hashtag" onclick="copyTag(this)">#lookdodia <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#ootd <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#instafashion <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#fashion <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#style <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#outfitoftheday <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#reels <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#viral <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#explore <span class="copy-hint">⬜ copiar</span></div>
+    <div class="hashtag" onclick="copyTag(this)">#fyp <span class="copy-hint">⬜ copiar</span></div>
+  </div>
+</div>
+
+<!-- COMBINAÇÕES PRONTAS -->
+<div class="combo-section">
+  <h2>Combinações Prontas por Tipo de Post</h2>
+  <p class="combo-sub">Copie e cole direto na legenda — cada combinação tem ~17 hashtags estratégicas</p>
+
+  <div class="combo-card lingerie">
+    <h3>🩷 Post de Lingerie / Sensualidade</h3>
+    <p class="context">Para peças íntimas, bodysuits, conjuntos especiais</p>
+    <div class="combo-tags">
+      <span>#modafeminina</span><span>#lingeriebrasil</span><span>#modaintima</span><span>#lingerieelegante</span><span>#autoestima</span><span>#feminilidade</span><span>#sensualidade</span><span>#elegancia</span><span>#mulherpoderosa</span><span>#goiania</span><span>#modagoiania</span><span>#consumolocal</span><span>#lookdodia</span><span>#instafashion</span><span>#reels</span>
+    </div>
+  </div>
+
+  <div class="combo-card semijoias">
+    <h3>💛 Post de Semijoias / Acessórios</h3>
+    <p class="context">Para colares, brincos, pulseiras, anéis</p>
+    <div class="combo-tags">
+      <span>#acessoriosfemininos</span><span>#semijoias</span><span>#semijoiasfinas</span><span>#bijuterias</span><span>#joiarriaartistica</span><span>#sofisticacao</span><span>#brincosgrandes</span><span>#colargrande</span><span>#precocerto</span><span>#goiania</span><span>#lojasgoiania</span><span>#lookdodia</span><span>#ootd</span><span>#fashion</span><span>#style</span>
+    </div>
+  </div>
+
+  <div class="combo-card bolsas">
+    <h3>💙 Post de Bolsas & Acessórios</h3>
+    <p class="context">Para bolsas, necessaires, clutches</p>
+    <div class="combo-tags">
+      <span>#bolsafeminina</span><span>#bolsadelicada</span><span>#acessoriosfemininos</span><span>#modafeminina</span><span>#estilofeminino</span><span>#goiania</span><span>#lojasgoiania</span><span>#presenteespecial</span><span>#promoção</span><span>#explore</span><span>#instafashion</span><span>#lookdodia</span>
+    </div>
+  </div>
+
+  <div class="combo-card promo">
+    <h3>🧡 Post de Campanha / Promoção</h3>
+    <p class="context">Para queima de estoque, datas comemorativas, ofertas</p>
+    <div class="combo-tags">
+      <span>#promoção</span><span>#ofertaespecial</span><span>#novidades</span><span>#precocerto</span><span>#modafeminina</span><span>#semijoias</span><span>#lingerie</span><span>#goiania</span><span>#modagoiania</span><span>#consumolocal</span><span>#viral</span><span>#fyp</span><span>#reels</span>
+    </div>
+  </div>
+
+  <div class="combo-card story">
+    <h3>💜 Post de Storytelling / Bastidores</h3>
+    <p class="context">Para história da marca, fundadora, conexão emocional</p>
+    <div class="combo-tags">
+      <span>#autoestima</span><span>#mulherpoderosa</span><span>#autocuidado</span><span>#feminilidade</span><span>#elegancia</span><span>#goiania</span><span>#consumolocal</span><span>#reels</span><span>#explore</span><span>#instafashion</span>
+    </div>
+  </div>
+
+  <button class="copy-all-btn" onclick="copyAllCombos()">⬜ Copiar Todas as Combinações</button>
+</div>
+
+<div class="footer">
+  <div class="logo-sm">ARMOIRE ATELIER</div>
+  <p>Pacote de Hashtags · Estratégia de Conteúdo · 2026</p>
+</div>
+
+<script>
+function copyTag(el) {
+  const text = el.childNodes[0].textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const hint = el.querySelector('.copy-hint');
+    hint.textContent = '✓ copiado!';
+    setTimeout(() => hint.textContent = '⬜ copiar', 1500);
+  });
+}
+
+function copyAllCombos() {
+  const cards = document.querySelectorAll('.combo-card');
+  let allText = '';
+  cards.forEach(card => {
+    const title = card.querySelector('h3').textContent.trim();
+    const tags = Array.from(card.querySelectorAll('.combo-tags span')).map(s => s.textContent.trim()).join(' ');
+    allText += title + '\n' + tags + '\n\n';
+  });
+  navigator.clipboard.writeText(allText.trim()).then(() => {
+    const btn = document.querySelector('.copy-all-btn');
+    btn.textContent = '✓ Copiado!';
+    setTimeout(() => btn.textContent = '⬜ Copiar Todas as Combinações', 2000);
+  });
+}
+</script>
+
+</body>
+</html>
